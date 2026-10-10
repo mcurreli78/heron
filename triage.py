@@ -23,8 +23,6 @@ W_KEYWORD = 1
 
 
 
-scores = {}
-verdicts = []
 
 KEYWORDS = ["urgent", "verify", "suspended", "password", "expires", "act now",
             "congratulations", "winner", "claim", "immediately", "gift card"]
@@ -32,6 +30,9 @@ KEYWORDS = ["urgent", "verify", "suspended", "password", "expires", "act now",
 def check_mail(folder, flagged=None):
     if flagged is None:
         flagged = []
+
+    scores = {}
+    verdicts = []
 
     files = os.listdir(folder)
     for fn in files:
@@ -91,6 +92,8 @@ def check_mail(folder, flagged=None):
     out.write(str(verdicts))
     out.close()
     print("flagged:", flagged)
+
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
